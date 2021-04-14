@@ -1,0 +1,26 @@
+<html>
+    <script>
+        function loadDoc() 
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) 
+                {
+                    output=JSON.parse(this.responseText);
+                    string=""
+                    for(var i=0;i<output["Names"].length;i++)
+                    {
+                        string +="Name: "+output['Names'][i]+"Similarity: "+output['Score'][i]*100+"<br>"
+                    }
+                    document.getElementById("output").innerHTML = string;
+                }
+            };
+            xhttp.open("GET", "http://localhost:5000/Result", true);
+            xhttp.send();
+        }
+    </script>
+    <body>
+        <button type="button" onclick="loadDoc()">Evaluate</button>
+        <div id="output"></div>
+    </body>
+</html>
