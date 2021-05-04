@@ -1,26 +1,65 @@
 <html>
-    <script>
-        function loadDoc() 
-        {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Admin page</title>
+</head>
+<style>
+    body{
+        margin-bottom: 0%;
+        background-image: url("https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        min-height:100%;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        backdrop-filter: blur(5px);
+    }
+    h1{
+      margin-top: 1rem;
+      font-style: italic;
+    }
+    div,button{
+        margin-left: 50px;
+        margin-top: 2rem;
+    }
+    #view{
+        font-weight: 650;
+        font-style: italic;
+        font-size:x-large;
+    }
+    #output{
+        font-weight: bold;
+        font-style: italic;
+        font-size: larger;
+    }
+</style>
+<body>
+<script>
+    function loadDoc() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                output=JSON.parse(this.responseText);
+                string=""
+                for(var i=0;i<output["Names"].length;i++)
                 {
-                    output=JSON.parse(this.responseText);
-                    string=""
-                    for(var i=0;i<output["Names"].length;i++)
-                    {
-                        string +="Name: "+output['Names'][i]+"Similarity: "+output['Score'][i]*100+"<br>"
-                    }
-                    document.getElementById("output").innerHTML = string;
+                    string +="Name: "+output['Names'][i]+"      Similarity: "+output['Score'][i]*100+"<br>"
                 }
-            };
-            xhttp.open("GET", "http://localhost:5000/Result", true);
-            xhttp.send();
-        }
-    </script>
-    <body>
-        <button type="button" onclick="loadDoc()">Evaluate</button>
-        <div id="output"></div>
-    </body>
+                document.getElementById("output").innerHTML = string;
+            }
+        };
+        xhttp.open("GET", "http://127.0.0.1:5000/Result", true);
+        xhttp.send();
+    }
+</script>
+<body>
+    <h1><center>Welcome to the admin page</center></h1>
+    <div id="view">Click the button below to view the list of candidates</div>
+    <button id="button" type="button" class="btn btn-info" onclick="loadDoc()">Evaluate</button>  
+    <div id="output"></div>
+</body>
 </html>
