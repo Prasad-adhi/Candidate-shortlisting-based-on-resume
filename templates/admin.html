@@ -38,7 +38,8 @@
 </style>
 <body>
 <script>
-    function loadDoc() {
+    function loadDoc()
+    {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) 
@@ -47,12 +48,13 @@
                 string=""
                 for(var i=0;i<output["Names"].length;i++)
                 {
-                    string +="Name: "+output['Names'][i]+"      Similarity: "+output['Score'][i]*100+"<br>"
+                    string ="Name: "+output['Names'][i]+"<br>Contact no: "+output['Contact'][i]+"<br>Email id: "+output['Email'][i]+"<br>Resume: "+output['File'][i]+"<br>Similarity: "+output['Score'][i]+"<br><br>"
+                    //var text=document.createTextNode(string)
                 }
                 document.getElementById("output").innerHTML = string;
             }
         };
-        xhttp.open("GET", "http://127.0.0.1:5000/Result", true);
+        xhttp.open("GET", "http://localhost:5000/Result", true);
         xhttp.send();
     }
 </script>

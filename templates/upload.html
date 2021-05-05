@@ -7,6 +7,10 @@
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <style>
+   .i_error
+   {
+      color:red
+   }
    body{
       margin-bottom: 0%;
       background-image: url("https://images.unsplash.com/photo-1503551723145-6c040742065b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
@@ -51,6 +55,68 @@
       font-weight: 500;
    }
 </style>
+<script>
+   function namev()
+   {
+      var name=document.getElementById("name").value
+      if(name=="")
+      {
+         document.getElementById("nerr").innerHTML="Please enter name";
+         document.getElementById("name").focus();
+      }
+      else if(/\d/.test(name))
+      {
+         document.getElementById("nerr").innerHTML="Name should not contain numbers";
+         document.getElementById("name").focus();
+      }
+      else
+      {
+         document.getElementById("nerr").innerHTML="";
+      }
+   }
+   function numberv()
+   {
+      var number=document.getElementById("cno").value
+      if(number=="")
+      {
+         document.getElementById("cnoerr").innerHTML="Please enter your contact number";
+         document.getElementById("cno").focus();
+      }
+      else if(/[a-zA-Z]/g.test(number))
+      {
+         document.getElementById("cnoerr").innerHTML="Contact number should not have any alphabets";
+         document.getElementById("cno").focus();
+      }
+      else if(number.length!=10)
+      {
+         document.getElementById("cnoerr").innerHTML="Length of Contact number should be 10";
+         document.getElementById("cno").focus();
+      }
+      else
+      {
+         document.getElementById("cnoerr").innerHTML="";
+      }
+   }
+   function emailv()
+   {
+      var email=document.getElementById("email").value
+      var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+      if(email=="")
+      {
+         document.getElementById("emerr").innerHTML="Please enter your email";
+         document.getElementById("email").focus();
+      }
+      else if(!email.match(mailformat))
+      {
+         document.getElementById("emerr").innerHTML="Please enter the right email format";
+         document.getElementById("email").focus();
+      }
+      else
+      {
+         document.getElementById("emerr").innerHTML="";
+      }
+   }
+</script>
 <body>
    <h1><center>Candidate Shortlisting</center></h1>
    <div id="details">Fill in your details:</div>
@@ -58,34 +124,38 @@
       <fieldset>
          <div class="form-row">
             <div class="col">
-            <div class="form-group">
-               <label for="name">Name</label>
-               <input type="text" id="name" class="form-control"> 
-            </div>
-            </div>
-         </div>
-         <div class="form-row">
-            <div class="col">
-            <div class="form-group">
-               <label for="cno">Contact Number</label>
-               <input type="text" id="cno" class="form-control"> 
-            </div>
+               <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" name="cname" class="form-control" onblur="namev()"> 
+                  <div id="nerr" class="i_error"></div>
+               </div>
             </div>
          </div>
          <div class="form-row">
             <div class="col">
-            <div class="form-group">
-               <label for="email">Email-Id</label>
-               <input type="email" id="email" class="form-control"> 
-            </div>
+               <div class="form-group">
+                  <label for="cno">Contact Number</label>
+                  <input type="text" id="cno" name="c-cno" class="form-control" onblur="numberv()"> 
+                  <div id="cnoerr" class="i_error"></div>
+               </div>
             </div>
          </div>
          <div class="form-row">
             <div class="col">
-            <div class="form-group">
-               <label for="resume">Upload resume</label>
-               <input type="file" name="file" id="resume" class="form-control"> 
+               <div class="form-group">
+                  <label for="email">Email-Id</label>
+                  <input type="email" id="email" name="cemail" class="form-control" onblur="emailv()">
+                  <div id="emerr" class="i_error"></div> 
+               </div>
             </div>
+         </div>
+         <div class="form-row">
+            <div class="col">
+               <div class="form-group">
+                  <label for="resume">Upload resume</label>
+                  <input type="file" name="file" id="resume" class="form-control" onblur="filev()"> 
+                  <div id="ferr" class="i_error"></div>
+               </div>
             </div>
          </div>
       </fieldset>
