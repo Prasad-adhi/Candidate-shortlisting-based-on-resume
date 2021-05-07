@@ -29,7 +29,7 @@ def upload():
 
 @app.route('/download')
 def download():
-    file_data=FileContents.query.filter_by(id=1)
+    file_data=FileContents.query.filter_by(id=0)
     return send_file(BytesIO(file_data.data),attachment_filename='Resume.pdf',as_attachment=True)
 
 

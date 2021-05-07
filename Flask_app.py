@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request,jsonify
+from flask import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import docx2txt
@@ -6,6 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from Scanner import similarity
 import sqlite3
+import os
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///./Candidates.db"
@@ -52,6 +54,10 @@ def admin():
 def Result():
    output = similarity()
    return jsonify(output)
+
+@app.route('/<path:filename>')
+def download(filename):
+   return send_from_directory(directory="./", filename=filename)
 		
 if __name__ == '__main__':
    app.run(debug = True)
