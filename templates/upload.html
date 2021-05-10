@@ -3,8 +3,11 @@
 <head>
    <meta charset="UTF-8">
    <title>Homepage</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
    <!--<link rel="stylesheet" href="style.css">-->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
    .i_error
@@ -23,25 +26,23 @@
       overflow: hidden;
    }
    h1{
-      margin-top: 0.05rem;
+      margin-top: 1rem;
       font-style: italic;
+      font-weight: bold;
    }
    #details{
       font-weight:700;
       font-style: italic;
-      font-size: 130%;
-      margin : 1.5rem 20rem 1.5rem 20rem;
+      font-size: 25px;
+      margin : 3rem 20rem 1rem 35rem;
    }
    legend{
       font-weight: 600;
    }
    #form{
-      margin-top: 1rem;
-      margin-right: 20rem;
-      margin-left: 20rem;
-      margin-bottom: 1rem;
+      margin: 3rem 35rem 1rem 35rem;
    }
-   button{
+   #button{
       width: 100%;
    }
    fieldset{
@@ -52,7 +53,7 @@
       border-radius: 8px;
    }
    label[for]{
-      font-weight: 500;
+      font-weight: bold;
    }
 </style>
 <script>
@@ -99,8 +100,9 @@
    }
    function emailv()
    {
-      var email=document.getElementById("email").value
-      var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;
+      email=document.getElementById("email").value;
+      /*var mailformat = /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/;*/
+      mailformat=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
       if(email=="")
       {
          document.getElementById("emerr").innerHTML="Please enter your email";
@@ -109,7 +111,7 @@
       else if(!email.match(mailformat))
       {
          document.getElementById("emerr").innerHTML="Please enter the right email format";
-         document.getElementById("email").focus();
+         document.getElementById("email").focus();  
       }
       else
       {
@@ -118,6 +120,21 @@
    }
 </script>
 <body>
+   <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <a class="navbar-brand" href="#">Candidate shortlister</a>
+         </div>
+         <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <!--<li><a href="#">Page 1</a></li>-->
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+            <li><a href="admin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+         </ul>
+         </div>
+   </nav>
    <h1><center>Candidate Shortlisting</center></h1>
    <div id="details">Fill in your details:</div>
    <form id="form" action = "http://localhost:5000/uploader" method = "POST" enctype = "multipart/form-data">
