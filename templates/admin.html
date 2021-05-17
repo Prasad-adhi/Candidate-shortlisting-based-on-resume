@@ -38,6 +38,24 @@
 </style>
 <body>
 <script>
+    function saveFile(event)
+    {
+        event.preventDefault();
+        var form=new FormData()
+        form.append("file",document.getElementsByName("file")[0].files[0])
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() 
+        {
+            if (this.readyState == 4 && this.status == 200) 
+            {
+                output=JSON.parse(this.responseText);
+                string=""
+                document.getElementById("message").innerHTML=output["text"]
+            }
+        };
+        xhttp.open("POST", "http://127.0.0.1:5000/job_upload", true);
+        xhttp.send(form);
+    }
     function loadDoc()
     {
         var xhttp = new XMLHttpRequest();
@@ -69,7 +87,7 @@
 
                     var link=document.createElement("a")
                     var att = document.createAttribute("href");  
-                    att.value = output['File'][i];
+                    att.value = "resumes/"+output['File'][i]
                     link.setAttributeNode(att);
                     var att1 = document.createAttribute("download");  
                     link.setAttributeNode(att1);
@@ -86,12 +104,18 @@
                 }
             }
         };
-        xhttp.open("GET", "http://localhost:5000/Result", true);
+        xhttp.open("GET", "http://127.0.0.1:5000/Result", true);
         xhttp.send();
     }
 </script>
 <body>
     <h1><center>Welcome to the admin page</center></h1>
+    <form method="POST" action="/job_upload" enctype="multipart/form-data" onsubmit="saveFile(event)">
+        <div>Add a new job description in the file upload and click on submit</div>
+        <input type="file" name="file"><br>
+        <input type="submit"><br>
+        <div id="message"></div>
+    </form>
     <div id="view">Click the button below to view the list of candidates</div>
     <button id="button" type="button" class="btn btn-info" onclick="loadDoc()">Evaluate</button>  
     <div id="output"></div>
