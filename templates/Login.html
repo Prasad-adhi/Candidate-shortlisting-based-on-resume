@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script>
+            $(document).ready(
+                function()
+                {
+                    
+                    $('#login').click(
+                        function()
+                        {
+                            if($("#uname").val()=="admin")
+                            {
+                                if($("#pwd").val()=="password")
+                                {
+                                    $("#valid").attr("href","/admin")
+                                }
+                                else
+                                {
+                                    alert("Wrong password")
+                                }
+                            }
+                            else
+                            {
+                                alert("Wrong username")
+                            }
+                        }
+                    );
+                }
+            );
+        </script>
+    </head>
+    <body>
+        Enter username:<input type="text" id="uname"><br>
+        Enter password:<input type="password" id="pwd"><br>
+        <a id="valid"><button id="login">Login</button></a>
+    </body>
+</html>
