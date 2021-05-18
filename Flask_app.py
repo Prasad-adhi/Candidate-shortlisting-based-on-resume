@@ -76,6 +76,10 @@ def Result():
 def download(filename):
    return send_from_directory(directory="./resumes", filename=filename)
 
+@app.route('/jobs/<path:filename>')
+def download_job(filename):
+   return send_from_directory(directory="./jobs", filename=filename)
+
 		
 if __name__ == '__main__':
    app.run(debug = True)
