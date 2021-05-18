@@ -55,6 +55,12 @@
    label[for]{
       font-weight: bold;
    }
+   #job_d
+   {
+      font-weight: bold;
+      font-size: large;
+      font-style: italic;
+   }
 </style>
 <script>
    function namev()
@@ -131,11 +137,16 @@
          </ul>
          <ul class="nav navbar-nav navbar-right">
             <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-            <li><a href="admin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
          </ul>
          </div>
    </nav>
    <h1><center>Candidate Shortlisting</center></h1>
+   <div id="job_d">
+      <center>
+         Click <a href="/jobs/job_description.docx" download>here</a> to view the current job opening 
+      </center>
+   </div>
    <div id="details">Fill in your details:</div>
    <form id="form" action = "http://localhost:5000/uploader" method = "POST" enctype = "multipart/form-data">
       <fieldset>
