@@ -9,26 +9,40 @@
 <style>
     body{
         margin-bottom: 0%;
-        background-image: url("https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-image: url("https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3000&q=80");
+        /*background-image: url("https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80");*/
         background-size: cover;
         min-height:100%;
         background-position: center center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
     }
     h1{
-      margin-top: 1rem;
+      margin-top: 0.7rem;
       font-style: italic;
     }
     div,button{
-        margin-left: 50px;
-        margin-top: 2rem;
+        margin-top: 2.5rem;
     }
-    #view{
+    .view{
         font-weight: 650;
         font-style: italic;
         font-size:x-large;
+    }
+    input[type="file"]{
+        font-size:medium;
+        font-weight: bold;
+    }
+    input[value="Change"]{
+        margin-top: 1rem;
+    }
+    #message{
+        font-weight: bold;
+        font-style: italic;
+        font-size: larger;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
     }
     #output{
         font-weight: bold;
@@ -109,15 +123,15 @@
     }
 </script>
 <body>
+    <br>
     <h1><center>Welcome to the admin page</center></h1>
     <form method="POST" action="/job_upload" enctype="multipart/form-data" onsubmit="saveFile(event)">
-        <div>Add a new job description in the file upload and click on submit</div>
-        <input type="file" name="file"><br>
-        <input type="submit"><br>
-        <div id="message"></div>
+        <center><div class="view">Add a new job description in the file upload and click on change &emsp;<input type="file" name="file"></div></center>
+        <center><input type="submit" class="btn btn-info" value="Change"><br></center>
+        <center><div id="message"></div></center>
     </form>
-    <div id="view">Click the button below to view the list of candidates</div>
-    <button id="button" type="button" class="btn btn-info" onclick="loadDoc()">Evaluate</button>  
-    <div id="output"></div>
+    <center><div class="view">Click the button below to view the list of candidates</div></center>
+    <center><button id="button" type="button" class="btn btn-info" onclick="loadDoc()">Evaluate</button>  </center>
+    <center><div id="output"></div></center>
 </body>
 </html>
