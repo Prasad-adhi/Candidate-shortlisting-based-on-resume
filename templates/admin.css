@@ -1,0 +1,42 @@
+body{
+    margin-bottom: 0%;
+    background-image: url("https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3000&q=80");
+    /*background-image: url("https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80");*/
+    background-size: cover;
+    min-height:100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: blur(10px);
+}
+h1{
+  margin-top: 0.7rem;
+  font-style: italic;
+}
+div,button{
+    margin-top: 2.5rem;
+}
+.view{
+    font-weight: 650;
+    font-style: italic;
+    font-size:x-large;
+}
+input[type="file"]{
+    font-size:medium;
+    font-weight: bold;
+}
+input[value="Change"]{
+    margin-top: 1rem;
+}
+#message{
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+#output{
+    font-weight: bold;
+    font-style: italic;
+    font-size: larger;
+}
